@@ -3,4 +3,16 @@
   <groupId>auckland.cs</groupId>
   <artifactId>TitledNode</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.tesis.dynaware</groupId>
+  		<artifactId>de.tesis.dynaware.grapheditor.core</artifactId>
+  		<version>1.3.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tesis.dynaware</groupId>
+  		<artifactId>de.tesis.dynaware.grapheditor.demo</artifactId>
+  		<version>1.3.1</version>
+  	</dependency>
+  </dependencies>
 </project>
