@@ -97,7 +97,7 @@ public class TitledNodeSkin extends GNodeSkin {
     /**
      * 
      */
-    public VBox getContenRoot(){
+    public VBox getContentRoot() {
     	return contentRoot;    	
     }
 
