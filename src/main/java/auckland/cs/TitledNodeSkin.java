@@ -1,6 +1,9 @@
+/*
+ * TitledNodeSkin class by TESIS DYNAware GmbH Copyright (C) 2005 - 2014  
+ * With modifications  
+ */
+
 package auckland.cs;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
