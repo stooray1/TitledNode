@@ -6,6 +6,7 @@
 package auckland.cs;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.ReadOnlyDoubleWrapper;
 
 import javafx.css.PseudoClass;
 import javafx.geometry.Point2D;
@@ -54,6 +55,7 @@ public class TitledNodeSkin extends GNodeSkin {
     private static final int HEADER_HEIGHT = 20;
 
     private final Rectangle selectionHalo = new Rectangle();
+    private static final ReadOnlyDoubleWrapper HALO_EXTS = new ReadOnlyDoubleWrapper(2 + HALO_OFFSET);
 
     private VBox contentRoot = new VBox();
     private HBox header = new HBox();
@@ -237,6 +239,8 @@ public class TitledNodeSkin extends GNodeSkin {
         selectionHalo.setLayoutY(-HALO_OFFSET);
 
         selectionHalo.getStyleClass().add(STYLE_CLASS_SELECTION_HALO);
+        selectionHalo.widthProperty().bind(contentRoot.widthProperty().add(HALO_EXTS));
+        selectionHalo.heightProperty().bind(contentRoot.heightProperty().add(HALO_EXTS));
     }
 
     /**
@@ -246,8 +250,8 @@ public class TitledNodeSkin extends GNodeSkin {
 
         if (selectionHalo.isVisible()) {
 
-            selectionHalo.setWidth(getRoot().getWidth() + 2 * HALO_OFFSET);
-            selectionHalo.setHeight(getRoot().getHeight() + 2 * HALO_OFFSET);
+            //selectionHalo.setWidth(getRoot().getWidth() + 2 * HALO_OFFSET);
+            //selectionHalo.setHeight(getRoot().getHeight() + 2 * HALO_OFFSET);
 
             final double cornerLength = 2 * HALO_CORNER_SIZE;
             final double xGap = getRoot().getWidth() - 2 * HALO_CORNER_SIZE + 2 * HALO_OFFSET;
