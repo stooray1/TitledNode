@@ -176,12 +176,9 @@ public class TitledNodeSkin extends GNodeSkin {
         closeButton.setCursor(Cursor.DEFAULT);
         closeButton.setOnAction(event -> Commands.removeNode(getGraphEditor().getModel(), getNode()));
 
-        contentRoot.minWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.prefWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.maxWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.minHeightProperty().bind(getRoot().heightProperty());
-        contentRoot.prefHeightProperty().bind(getRoot().heightProperty());
-        contentRoot.maxHeightProperty().bind(getRoot().heightProperty());
+        javafx.scene.layout.StackPane root = getRoot();
+        root.prefWidthProperty().bind(contentRoot.prefWidthProperty());
+        root.prefHeightProperty().bind(contentRoot.prefHeightProperty());
 
         contentRoot.setLayoutX(BORDER_WIDTH);
         contentRoot.setLayoutY(BORDER_WIDTH);
