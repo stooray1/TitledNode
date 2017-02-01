@@ -235,8 +235,7 @@ public class TitledNodeSkin extends GNodeSkin {
         selectionHalo.setMouseTransparent(false);
         selectionHalo.setVisible(false);
 
-        selectionHalo.setLayoutX(-HALO_OFFSET);
-        selectionHalo.setLayoutY(-HALO_OFFSET);
+        selectionHalo.relocate(-HALO_OFFSET, -HALO_OFFSET);
 
         selectionHalo.getStyleClass().add(STYLE_CLASS_SELECTION_HALO);
         selectionHalo.widthProperty().bind(contentRoot.widthProperty().add(HALO_EXTS));
