@@ -182,8 +182,7 @@ public class TitledNodeSkin extends GNodeSkin {
         root.prefWidthProperty().bind(contentRoot.prefWidthProperty());
         root.prefHeightProperty().bind(contentRoot.prefHeightProperty());
 
-        contentRoot.setLayoutX(BORDER_WIDTH);
-        contentRoot.setLayoutY(BORDER_WIDTH);
+        //contentRoot.relocate(BORDER_WIDTH, BORDER_WIDTH);
 
         contentRoot.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
     }
