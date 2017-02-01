@@ -55,7 +55,7 @@ public class TitledNodeSkin extends GNodeSkin {
     private static final int HEADER_HEIGHT = 20;
 
     private final Rectangle selectionHalo = new Rectangle();
-    private static final ReadOnlyDoubleWrapper HALO_EXTS = new ReadOnlyDoubleWrapper(2 + HALO_OFFSET);
+    private static final ReadOnlyDoubleWrapper HALO_EXTS = new ReadOnlyDoubleWrapper(2 * HALO_OFFSET);
 
     private VBox contentRoot = new VBox();
     private HBox header = new HBox();
