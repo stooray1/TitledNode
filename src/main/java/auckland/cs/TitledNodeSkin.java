@@ -76,16 +76,16 @@ public class TitledNodeSkin extends GNodeSkin {
         super(node);
 
         border.getStyleClass().setAll(STYLE_CLASS_BORDER);
-        border.widthProperty().bind(getRoot().widthProperty());
-        border.heightProperty().bind(getRoot().heightProperty());
-
-        getRoot().getChildren().add(border);
         getRoot().setMinSize(MIN_WIDTH, MIN_HEIGHT);
 
         addSelectionHalo();
         addSelectionListener();
 
         createContent();
+        border.widthProperty().bind(contentRoot.widthProperty());
+        border.heightProperty().bind(contentRoot.heightProperty());
+
+        getRoot().getChildren().add(border);
 
         contentRoot.addEventFilter(MouseEvent.MOUSE_DRAGGED, this::filterMouseDragged);
     }
