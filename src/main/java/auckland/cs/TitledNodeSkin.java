@@ -6,6 +6,7 @@
 package auckland.cs;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.ReadOnlyDoubleWrapper;
 
 import javafx.css.PseudoClass;
 import javafx.geometry.Point2D;
@@ -54,6 +55,7 @@ public class TitledNodeSkin extends GNodeSkin {
     private static final int HEADER_HEIGHT = 20;
 
     private final Rectangle selectionHalo = new Rectangle();
+    private static final ReadOnlyDoubleWrapper HALO_EXTS = new ReadOnlyDoubleWrapper(2 * HALO_OFFSET);
 
     private VBox contentRoot = new VBox();
     private HBox header = new HBox();
@@ -74,16 +76,16 @@ public class TitledNodeSkin extends GNodeSkin {
         super(node);
 
         border.getStyleClass().setAll(STYLE_CLASS_BORDER);
-        border.widthProperty().bind(getRoot().widthProperty());
-        border.heightProperty().bind(getRoot().heightProperty());
-
-        getRoot().getChildren().add(border);
         getRoot().setMinSize(MIN_WIDTH, MIN_HEIGHT);
 
         addSelectionHalo();
         addSelectionListener();
 
         createContent();
+        border.widthProperty().bind(contentRoot.widthProperty());
+        border.heightProperty().bind(contentRoot.heightProperty());
+
+        getRoot().getChildren().add(border);
 
         contentRoot.addEventFilter(MouseEvent.MOUSE_DRAGGED, this::filterMouseDragged);
     }
@@ -176,15 +178,11 @@ public class TitledNodeSkin extends GNodeSkin {
         closeButton.setCursor(Cursor.DEFAULT);
         closeButton.setOnAction(event -> Commands.removeNode(getGraphEditor().getModel(), getNode()));
 
-        contentRoot.minWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.prefWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.maxWidthProperty().bind(getRoot().widthProperty());
-        contentRoot.minHeightProperty().bind(getRoot().heightProperty());
-        contentRoot.prefHeightProperty().bind(getRoot().heightProperty());
-        contentRoot.maxHeightProperty().bind(getRoot().heightProperty());
+        javafx.scene.layout.StackPane root = getRoot();
+        root.prefWidthProperty().bind(contentRoot.prefWidthProperty());
+        root.prefHeightProperty().bind(contentRoot.prefHeightProperty());
 
-        contentRoot.setLayoutX(BORDER_WIDTH);
-        contentRoot.setLayoutY(BORDER_WIDTH);
+        //contentRoot.relocate(BORDER_WIDTH, BORDER_WIDTH);
 
         contentRoot.getStyleClass().setAll(STYLE_CLASS_BACKGROUND);
     }
@@ -236,10 +234,11 @@ public class TitledNodeSkin extends GNodeSkin {
         selectionHalo.setMouseTransparent(false);
         selectionHalo.setVisible(false);
 
-        selectionHalo.setLayoutX(-HALO_OFFSET);
-        selectionHalo.setLayoutY(-HALO_OFFSET);
+        selectionHalo.relocate(-HALO_OFFSET, -HALO_OFFSET);
 
         selectionHalo.getStyleClass().add(STYLE_CLASS_SELECTION_HALO);
+        selectionHalo.widthProperty().bind(contentRoot.widthProperty().add(HALO_EXTS));
+        selectionHalo.heightProperty().bind(contentRoot.heightProperty().add(HALO_EXTS));
     }
 
     /**
@@ -249,8 +248,8 @@ public class TitledNodeSkin extends GNodeSkin {
 
         if (selectionHalo.isVisible()) {
 
-            selectionHalo.setWidth(getRoot().getWidth() + 2 * HALO_OFFSET);
-            selectionHalo.setHeight(getRoot().getHeight() + 2 * HALO_OFFSET);
+            //selectionHalo.setWidth(getRoot().getWidth() + 2 * HALO_OFFSET);
+            //selectionHalo.setHeight(getRoot().getHeight() + 2 * HALO_OFFSET);
 
             final double cornerLength = 2 * HALO_CORNER_SIZE;
             final double xGap = getRoot().getWidth() - 2 * HALO_CORNER_SIZE + 2 * HALO_OFFSET;
