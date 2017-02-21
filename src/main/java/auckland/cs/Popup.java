@@ -1,5 +1,9 @@
 package auckland.cs;
 
+/**
+ * Simple popup window 
+ * @author mkha153
+ */
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -53,9 +57,12 @@ public class Popup {
       stage.initStyle(StageStyle.UNDECORATED);      
       stage.setX(x);
       stage.setY(y);
-      stage.show();	
       
       dragOffsetX = dragOffsetY = 0;      
+	}
+	
+	public void show(){
+		  stage.show();	
 	}
 	 protected void handleMousePressed(MouseEvent e) {
 		 // Store the mouse x and y coordinates with respect to the
@@ -69,4 +76,5 @@ public class Popup {
 		stage.setY(e.getScreenY() - this.dragOffsetY);
 		
 	}
+	
 }
