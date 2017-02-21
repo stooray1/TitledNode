@@ -20,7 +20,7 @@ public class TitledConnectorSkin extends GConnectorSkin {
     private static final String STYLE_CLASS = "titled-connector";
     private static final String STYLE_CLASS_FORBIDDEN_GRAPHIC = "titled-connector-forbidden-graphic";
 
-    private static final double SIZE = 15;
+    private static final double SIZE = 10;
 
     private static final PseudoClass PSEUDO_CLASS_ALLOWED = PseudoClass.getPseudoClass("allowed");
     private static final PseudoClass PSEUDO_CLASS_FORBIDDEN = PseudoClass.getPseudoClass("forbidden");
