@@ -31,7 +31,7 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
 
         super(connection);	              
         path.setMouseTransparent(true);
-        root.setOnMousePressed(this::handleMouseClicked);
+        root.setOnMouseClicked(this::handleMouseClicked);
         root.setOnMouseEntered(this::handleMouseEntered);
         root.setOnMouseExited(this::handleMouseExited); 
         
