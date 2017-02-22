@@ -29,36 +29,40 @@ public class Popup {
 	private double dragOffsetY;
 	
 	public Popup(double x, double y, Stage owner, String msg, String title) {
-	  stage = new Stage();
-      stage.initOwner(owner);
-      lblTitle = new Label(title);
-      txtMsg = new TextArea(msg);
-      txtMsg.setEditable(false);
-      
-      btClose = new Button("Close");
-      btClose.setOnAction(e -> stage.close()); 
-         
-      root = new BorderPane();
-      root.setTop(lblTitle);
-      root.setCenter(txtMsg);
-      root.setBottom(btClose);
-      
-      BorderPane.setAlignment(lblTitle, Pos.TOP_CENTER);
-      BorderPane.setAlignment(btClose, Pos.TOP_CENTER);
-      
-      
-      scene = new Scene(root, WIDTH, HEIGHT);
-      // Set mouse pressed and dragged even handlers for the scene
-      scene.setOnMousePressed(e -> handleMousePressed(e));
-      scene.setOnMouseDragged(e -> handleMouseDragged(e));
-      stage.setScene(scene);
-      
-      //Hide borders 
-      stage.initStyle(StageStyle.UNDECORATED);      
-      stage.setX(x);
-      stage.setY(y);
-      
-      dragOffsetX = dragOffsetY = 0;      
+		this(x, y, owner, msg, title, StageStyle.UNDECORATED);
+	}
+	
+	public Popup(double x, double y, Stage owner, String msg, String title, StageStyle style) {
+		  stage = new Stage();
+	      stage.initOwner(owner);
+	      lblTitle = new Label(title);
+	      txtMsg = new TextArea(msg);
+	      txtMsg.setEditable(false);
+	      
+	      btClose = new Button("Close");
+	      btClose.setOnAction(e -> stage.close()); 
+	         
+	      root = new BorderPane();
+	      root.setTop(lblTitle);
+	      root.setCenter(txtMsg);
+	      root.setBottom(btClose);
+	      
+	      BorderPane.setAlignment(lblTitle, Pos.TOP_CENTER);
+	      BorderPane.setAlignment(btClose, Pos.TOP_CENTER);
+	      
+	      
+	      scene = new Scene(root, WIDTH, HEIGHT);
+	      // Set mouse pressed and dragged even handlers for the scene
+	      scene.setOnMousePressed(e -> handleMousePressed(e));
+	      scene.setOnMouseDragged(e -> handleMouseDragged(e));
+	      stage.setScene(scene);
+	      
+	      //Hide borders 
+	      stage.initStyle(style);      
+	      stage.setX(x);
+	      stage.setY(y);
+	      
+	      dragOffsetX = dragOffsetY = 0;      
 	}
 	
 	public void show(){
