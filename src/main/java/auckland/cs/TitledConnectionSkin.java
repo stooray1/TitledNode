@@ -14,8 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class TitledConnectionSkin extends SimpleConnectionSkin {
-	 private static final String STYLE_CLASS = "titled-connection";	    
-	 private Popup popup;   
+	 private static final String STYLE_CLASS = "titled-connection";	 
+	 private static double normal_strok_width;
+	 private static double higlighted_strok_width;
+	 
     /**
      * Creates a new simple connection skin instance with mouse event .
      *
@@ -26,8 +28,15 @@ public class TitledConnectionSkin extends SimpleConnectionSkin {
         super(connection);	              
         path.setMouseTransparent(true);
         root.setOnMousePressed(this::handleMousePressed);
+        root.setOnMouseEntered(this::handleMouseEntered);
+        root.setOnMouseExited(this::handleMouseExited); 
+        
         path.getStyleClass().setAll(STYLE_CLASS);
+        
+        normal_strok_width = path.getStrokeWidth(); 
+        higlighted_strok_width = normal_strok_width + 2.0;        
     }    
+      
     
     @Override
     public void draw(final List<Point2D> points, final Map<GConnection, List<Point2D>> allPoints) {
@@ -35,8 +44,16 @@ public class TitledConnectionSkin extends SimpleConnectionSkin {
     }    
   
     private void handleMousePressed(final MouseEvent event) {    	
-       popup= new Popup(event.getScreenX(), event.getScreenY(), (Stage)root.getScene().getWindow(), getConnection().getId(), "Connection");     
+       Popup popup= new Popup(event.getScreenX(), event.getScreenY(), (Stage)root.getScene().getWindow(), getConnection().getId(), "Connection");     
        popup.show();   
     }	
+    
+    private void handleMouseEntered(final MouseEvent event){
+    	this.path.setStrokeWidth(higlighted_strok_width);   	
+    }
+    
+    private void handleMouseExited(final MouseEvent event){
+    	this.path.setStrokeWidth(normal_strok_width);    	
+    }
 
 }
