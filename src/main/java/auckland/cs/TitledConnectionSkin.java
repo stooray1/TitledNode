@@ -49,7 +49,7 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
         super.draw(points, allPoints);	        
     }    
   
-    private void handleMouseClicked(final MouseEvent event) {
+    public void handleMouseClicked(final MouseEvent event) {
         if(event.getButton()== MouseButton.SECONDARY){
      	   Popup popup= new Popup(event.getScreenX(), event.getScreenY(), (Stage)root.getScene().getWindow(), 
      			                  getConnection().getId(), "Connection",  StageStyle.DECORATED);     
@@ -58,11 +58,11 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
         }
      }
     
-    private void handleMouseEntered(final MouseEvent event){
+    public void handleMouseEntered(final MouseEvent event){
     	this.path.setStrokeWidth(higlighted_strok_width);   	
     }
     
-    private void handleMouseExited(final MouseEvent event){
+    public void handleMouseExited(final MouseEvent event){
     	this.path.setStrokeWidth(normal_strok_width);    	
     }
 
