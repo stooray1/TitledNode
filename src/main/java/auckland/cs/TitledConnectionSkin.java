@@ -22,6 +22,7 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
 	 private static double normal_strok_width;
 	 private static double higlighted_strok_width;
 	 
+	 private int  dependencyIndex;
     /**
      * Creates a new simple connection skin instance with mouse event .
      *
@@ -62,5 +63,14 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
     private void handleMouseExited(final MouseEvent event){
     	this.path.setStrokeWidth(normal_strok_width);    	
     }
+
+	public int getDependencyIndex() {
+		return dependencyIndex;
+	}
+
+	public void setDependencyIndex(int dependencyIndex) {
+		this.dependencyIndex = dependencyIndex;
+	}
+    
 
 }
