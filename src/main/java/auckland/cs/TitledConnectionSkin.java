@@ -11,8 +11,10 @@ import java.util.Map;
 import de.tesis.dynaware.grapheditor.core.skins.defaults.DefaultConnectionSkin;
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import auckland.cs.Popup;
@@ -72,5 +74,11 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
 		this.dependencyIndex = dependencyIndex;
 	}
     
+	public Group getRoot(){
+		return root;
+	}
+	public Path getPath(){
+		return path;
+	}
 
 }
