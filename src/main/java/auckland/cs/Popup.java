@@ -16,8 +16,8 @@ import javafx.stage.StageStyle;
 
 public class Popup {	
 	
-	protected static final double WIDTH =200.0;
-	protected static final double HEIGHT =200; 
+	protected static final double WIDTH =400.0;
+	protected static final double HEIGHT =200.0; 
 	protected  Stage stage;	
 	protected Scene scene;
 	
