@@ -155,3 +155,21 @@
 	-fx-opacity: 0.6;
 	-fx-effect: dropshadow(one-pass-box, rgba(180, 180, 180), 5, 0, 1, 1);
 }
+.att-style1 {
+    -fx-background-color: bisque;				
+}
+.att-style2 {
+    -fx-background-color: aqua;    	
+}
+.att-style3 {
+    -fx-background-color: lightblue;    	
+}
+.att-style4 {
+    -fx-background-color: chocolate;    	
+}
+.att-style5 {
+    -fx-background-color: coral;    	
+}
+.att-style6 {
+    -fx-background-color: crimson;    	
+}
