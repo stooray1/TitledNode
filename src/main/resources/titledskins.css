@@ -173,3 +173,11 @@
 .att-style6 {
     -fx-background-color: crimson;    	
 }
+
+.titled-connection-diff {
+  -fx-stroke: crimson;
+}
+
+.titled-connection-hidden {
+  -fx-opacity: 0.1;
+}
