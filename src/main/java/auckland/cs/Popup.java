@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -25,6 +26,7 @@ public class Popup {
 	protected TextArea txtMsg;
 	protected Button btClose;
 	protected BorderPane root;
+	protected VBox cntrVBox; 
 	private double dragOffsetX;
 	private double dragOffsetY;
 	
@@ -37,6 +39,7 @@ public class Popup {
 	      stage.initOwner(owner);
 	      lblTitle = new Label(title);
 	      txtMsg = new TextArea(msg);
+	      cntrVBox = new VBox();
 	      txtMsg.setEditable(false);
 	      
 	      btClose = new Button("Close");
@@ -44,8 +47,10 @@ public class Popup {
 	         
 	      root = new BorderPane();
 	      root.setTop(lblTitle);
-	      root.setCenter(txtMsg);
+	      cntrVBox.getChildren().add(txtMsg);
+	      root.setCenter(cntrVBox);
 	      root.setBottom(btClose);
+	      
 	      
 	      BorderPane.setAlignment(lblTitle, Pos.TOP_CENTER);
 	      BorderPane.setAlignment(btClose, Pos.TOP_CENTER);
@@ -68,7 +73,10 @@ public class Popup {
 	public void show(){
 		  stage.show();	
 	}
-	 protected void handleMousePressed(MouseEvent e) {
+	public VBox getCenterVBox(){
+		return this.cntrVBox;
+	}
+	protected void handleMousePressed(MouseEvent e) {
 		 // Store the mouse x and y coordinates with respect to the
 		 // stage in the reference variables to use them in the drag event
 		 this.dragOffsetX = e.getScreenX() - stage.getX();
