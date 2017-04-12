@@ -31,10 +31,12 @@ public class Popup {
 	private double dragOffsetY;
 	
 	public Popup(double x, double y, Stage owner, String msg, String title) {
-		this(x, y, owner, msg, title, StageStyle.UNDECORATED);
-	}
-	
+		this(x, y, owner, msg, title, StageStyle.UNDECORATED,  WIDTH, HEIGHT);
+	}	
 	public Popup(double x, double y, Stage owner, String msg, String title, StageStyle style) {
+		this(x, y, owner, msg, title, style, WIDTH, HEIGHT);		      
+	}
+	public Popup(double x, double y, Stage owner, String msg, String title, StageStyle style, double width, double height) {
 		  stage = new Stage();
 	      stage.initOwner(owner);
 	      lblTitle = new Label(title);
@@ -56,7 +58,7 @@ public class Popup {
 	      BorderPane.setAlignment(btClose, Pos.TOP_CENTER);
 	      
 	      
-	      scene = new Scene(root, WIDTH, HEIGHT);
+	      scene = new Scene(root, width, height);
 	      // Set mouse pressed and dragged even handlers for the scene
 	      scene.setOnMousePressed(e -> handleMousePressed(e));
 	      scene.setOnMouseDragged(e -> handleMouseDragged(e));
@@ -68,13 +70,20 @@ public class Popup {
 	      stage.setY(y);
 	      
 	      dragOffsetX = dragOffsetY = 0;      
-	}
+	}	
 	
 	public void show(){
 		  stage.show();	
 	}
 	public VBox getCenterVBox(){
 		return this.cntrVBox;
+	}
+	
+	public Stage getStage(){
+		return this.stage;
+	}
+	public Scene getScene(){
+		return this.scene;
 	}
 	protected void handleMousePressed(MouseEvent e) {
 		 // Store the mouse x and y coordinates with respect to the
