@@ -181,3 +181,9 @@
 .titled-connection-hidden {
   -fx-opacity: 0.1;
 }
+.titled-connection{
+ -fx-stroke-width: 1;
+}
+.titled-connection-higlighted{
+ -fx-stroke-width: 3;
+}
