@@ -20,9 +20,8 @@ import javafx.stage.StageStyle;
 import auckland.cs.Popup;
 
 public class TitledConnectionSkin extends DefaultConnectionSkin {
-	 private static final String STYLE_CLASS = "titled-connection";	 
-	 private static double normal_strok_width;
-	 private static double higlighted_strok_width;
+	 private static final String STYLE_CLASS = "titled-connection";
+	 private static final String STYLE_CLASS_HIGHLIGHTED = "titled-connection-higlighted";
 	 
 	 private int  dependencyIndex;
     /**
@@ -38,10 +37,8 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
         root.setOnMouseEntered(this::handleMouseEntered);
         root.setOnMouseExited(this::handleMouseExited); 
         
-        path.getStyleClass().setAll(STYLE_CLASS);
-        
-        normal_strok_width = path.getStrokeWidth(); 
-        higlighted_strok_width = normal_strok_width + 2.0;        
+        path.getStyleClass().setAll(STYLE_CLASS);        
+            
     }          
     
     @Override
@@ -58,12 +55,12 @@ public class TitledConnectionSkin extends DefaultConnectionSkin {
         }
      }
     
-    public void handleMouseEntered(final MouseEvent event){
-    	this.path.setStrokeWidth(higlighted_strok_width);   	
+    public void handleMouseEntered(final MouseEvent event){    	   
+    	this.path.getStyleClass().add(STYLE_CLASS_HIGHLIGHTED);
     }
     
     public void handleMouseExited(final MouseEvent event){
-    	this.path.setStrokeWidth(normal_strok_width);    	
+    	this.path.getStyleClass().remove(this.path.getStyleClass().size()-1);
     }
 
 	public int getDependencyIndex() {
