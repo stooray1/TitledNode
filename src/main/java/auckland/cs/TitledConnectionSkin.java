@@ -8,7 +8,7 @@ package auckland.cs;
 import java.util.List;
 import java.util.Map;
 
-import de.tesis.dynaware.grapheditor.core.skins.defaults.DefaultConnectionSkin;
+import de.tesis.dynaware.grapheditor.core.skins.defaults.connection.SimpleConnectionSkin;
 import de.tesis.dynaware.grapheditor.model.GConnection;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import auckland.cs.Popup;
 
-public class TitledConnectionSkin extends DefaultConnectionSkin {
+public class TitledConnectionSkin extends SimpleConnectionSkin {
 	 private static final String STYLE_CLASS = "titled-connection";
 	 private static final String STYLE_CLASS_HIGHLIGHTED = "titled-connection-higlighted";
 	 
